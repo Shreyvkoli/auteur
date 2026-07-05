@@ -1,0 +1,38 @@
+[
+  {
+    "role": "user",
+    "text": "can you add music ? to entire video",
+    "patchesApplied": false,
+    "timestamp": "2026-06-23T11:34:14.326449"
+  },
+  {
+    "role": "ai",
+    "text": "Failed to process prompt: Connection error.",
+    "patchesApplied": false,
+    "timestamp": "2026-06-23T11:34:15.770473"
+  },
+  {
+    "role": "user",
+    "text": "hi",
+    "patchesApplied": false,
+    "timestamp": "2026-06-23T11:36:38.398841"
+  },
+  {
+    "role": "ai",
+    "text": "Hey! How can I help you with your reel today?",
+    "patchesApplied": false,
+    "timestamp": "2026-06-23T11:36:41.166332"
+  },
+  {
+    "role": "user",
+    "text": "add lo-fi music to entire video",
+    "patchesApplied": false,
+    "timestamp": "2026-06-23T11:36:43.441896"
+  },
+  {
+    "role": "ai",
+    "text": "Added lo-fi music to the entire video.",
+    "patchesApplied": true,
+    "timestamp": "2026-06-23T11:36:45.649600"
+  }
+]

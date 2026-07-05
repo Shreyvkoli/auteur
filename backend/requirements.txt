@@ -1,0 +1,27 @@
+# Auteur Backend — Python Dependencies
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+pydantic-settings==2.7.1
+
+# Auth & Security
+python-jose[cryptography]==3.3.0
+python-multipart==0.0.20
+
+# Database
+supabase==2.13.0
+
+# AI / ML
+openai==1.61.1
+
+# Redis
+redis==5.2.1
+
+# HTTP Client
+httpx==0.28.1
+
+# Video Processing (FFmpeg wrapper via subprocess)
+# ffmpeg must be installed on system: brew install ffmpeg
+
+# Cloud Storage
+# cloudflare-r2 via boto3 if needed

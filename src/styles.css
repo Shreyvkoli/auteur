@@ -1,0 +1,227 @@
+/* Space Grotesk — local, no network dependency */
+@import "@fontsource/space-grotesk/300.css";
+@import "@fontsource/space-grotesk/400.css";
+@import "@fontsource/space-grotesk/500.css";
+@import "@fontsource/space-grotesk/600.css";
+@import "@fontsource/space-grotesk/700.css";
+@import "tw-animate-css";
+
+@import "tailwindcss" source(none);
+@source "../src";
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --yellow: #DFE104;
+  --black: #000000;
+  --dark: #09090B;
+  --panel: #0a0a0c;
+  --border: rgba(255,255,255,0.07);
+  --muted: #A1A1AA;
+}
+
+body {
+  font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--dark);
+  color: #FAFAFA;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root { height: 100vh; }
+
+::selection { background: #DFE104; color: #000; }
+
+::-webkit-scrollbar { width: 2px; height: 2px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #DFE104; border-radius: 0; }
+
+/* ── Marquee ── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-rev {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.marquee-track     { display: flex; width: max-content; animation: marquee     22s linear infinite; }
+.marquee-track-rev { display: flex; width: max-content; animation: marquee-rev 32s linear infinite; }
+
+/* ── Spin / Pulse ── */
+@keyframes spin  { to { transform: rotate(360deg); } }
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+.spin  { animation: spin  1s linear infinite; }
+.pulse { animation: pulse 2s ease-in-out infinite; }
+
+/* ── Kinetic glow ── */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(223,225,4,0); }
+  50%       { box-shadow: 0 0 24px 2px rgba(223,225,4,0.35); }
+}
+.glow-pulse { animation: glowPulse 2.4s ease-in-out infinite; }
+
+/* ── Kinetic border flash ── */
+@keyframes borderFlash {
+  0%   { border-color: rgba(223,225,4,0.2); }
+  50%  { border-color: rgba(223,225,4,0.9); }
+  100% { border-color: rgba(223,225,4,0.2); }
+}
+
+/* ── Btn base ── */
+.btn-kinetic {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease;
+}
+.btn-kinetic:hover { transform: scale(1.03); }
+.btn-kinetic:active { transform: scale(0.97); }
+
+/* ── Yellow CTA ── */
+.btn-yellow {
+  background: #DFE104;
+  color: #000;
+}
+.btn-yellow:hover { background: #f0f200; }
+
+/* ── Panel item hover ── */
+.panel-item {
+  transition: background 140ms ease, border-color 140ms ease;
+}
+.panel-item:hover {
+  background: rgba(223,225,4,0.05) !important;
+  border-color: rgba(223,225,4,0.2) !important;
+}
+
+/* Glassmorphism Prompt Box styling with a massive Wow Factor */
+.prompt-box-glass {
+  position: relative;
+  background: rgba(8, 8, 10, 0.6) !important;
+  backdrop-filter: blur(20px) saturate(220%);
+  -webkit-backdrop-filter: blur(20px) saturate(220%);
+  border: 1px solid rgba(223, 225, 4, 0.12) !important;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.6), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 0 0 1px rgba(223, 225, 4, 0.05) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Moving gradient ambient glow behind the box */
+.prompt-box-glass::after {
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  background: linear-gradient(135deg, 
+    rgba(223, 225, 4, 0.2), 
+    rgba(0, 240, 255, 0.15), 
+    rgba(255, 0, 127, 0.12), 
+    rgba(223, 225, 4, 0.2)
+  );
+  background-size: 300% 300%;
+  border-radius: 18px;
+  z-index: -2;
+  filter: blur(15px);
+  opacity: 0.15;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: ambientShift 8s ease infinite;
+}
+
+.prompt-box-glass:hover {
+  border-color: rgba(223, 225, 4, 0.35) !important;
+  background: rgba(12, 12, 16, 0.7) !important;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 15px 45px rgba(0, 0, 0, 0.7), 
+    0 0 25px rgba(223, 225, 4, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.prompt-box-glass:hover::after {
+  opacity: 0.4;
+  filter: blur(18px);
+}
+
+.prompt-box-glass.focused {
+  border-color: rgba(223, 225, 4, 0.8) !important;
+  background: rgba(14, 14, 18, 0.8) !important;
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.8), 
+    0 0 35px rgba(223, 225, 4, 0.3),
+    0 0 60px rgba(0, 240, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.prompt-box-glass.focused::after {
+  opacity: 0.65;
+  filter: blur(22px);
+  animation-duration: 4s;
+}
+
+/* Color transition for dash border when user is typing */
+.prompt-box-glass.has-text .dash-head {
+  stroke: #00f0ff !important; /* turns cyan! */
+  filter: drop-shadow(0 0 3px #00f0ff);
+}
+.prompt-box-glass.has-text .dash-trail {
+  stroke: rgba(0, 240, 255, 0.3) !important;
+}
+
+/* Speed up animations on focus */
+.prompt-box-glass.focused .dash-head {
+  animation-duration: 1.4s !important;
+}
+.prompt-box-glass.focused .dash-trail {
+  animation-duration: 1.4s !important;
+}
+.prompt-box-glass.focused .dash-faint {
+  animation-duration: 1.4s !important;
+}
+
+/* Rotational animation for plus icon */
+.btn-plus-spin {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s, color 0.2s;
+}
+.btn-plus-spin:hover {
+  transform: rotate(90deg);
+}
+.btn-plus-spin.active {
+  transform: rotate(135deg); /* cross close button */
+  color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+
+/* Keyframe for shifts in the glow gradient */
+@keyframes ambientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating animation for active send button */
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+.btn-float-active {
+  animation: floatIcon 2s ease-in-out infinite;
+}
+
+/* Custom scrollbar for prompt textarea inside the glass box */
+.prompt-textarea-custom::-webkit-scrollbar {
+  width: 4px;
+}
+.prompt-textarea-custom::-webkit-scrollbar-thumb {
+  background: rgba(223, 225, 4, 0.3);
+  border-radius: 2px;
+}
+.prompt-textarea-custom::-webkit-scrollbar-thumb:hover {
+  background: rgba(223, 225, 4, 0.6);
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "text": "hi",
+    "patchesApplied": false,
+    "timestamp": "2026-06-25T12:41:07.459202"
+  },
+  {
+    "role": "ai",
+    "text": "Failed to process prompt: Connection error.",
+    "patchesApplied": false,
+    "timestamp": "2026-06-25T12:41:08.771271"
+  }
+]
